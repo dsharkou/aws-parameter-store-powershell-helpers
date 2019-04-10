@@ -1,7 +1,7 @@
 param(
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
 	$sourcePrefixPath,
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
 	$targetPrefixPath
 )
 

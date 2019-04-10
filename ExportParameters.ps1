@@ -1,5 +1,5 @@
 param(
-    [Parameter(Mandatory=$false)]
+    [Parameter(Mandatory=$true)]
 	$sourcePrefixPath,
     [Parameter(Mandatory=$true)]
 	$outputFilePath = "C:\temp\parameters_export.json"
