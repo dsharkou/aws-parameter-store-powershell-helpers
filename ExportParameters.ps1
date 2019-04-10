@@ -1,14 +1,14 @@
 param(
     [Parameter(Mandatory=$true)]
-	$sourcePrefixPath,
+	$prefixPath,
     [Parameter(Mandatory=$true)]
-	$outputFilePath = "C:\temp\parameters_export.json"
+	$filePath
 )
 
 Import-Module AWSPowerShell;
 
-Write-Host "Using sourcePrefixPath $sourcePrefixPath"
-Write-Host "Using outputFilePath $outputFilePath"
+Write-Host "Using prefixPath $prefixPath"
+Write-Host "Using filePath $filePath"
 
 try
 {
@@ -16,12 +16,12 @@ try
 	
 	$parameters = New-Object System.Collections.ArrayList
 
-    Get-SSMParametersByPath -Path $sourcePrefixPath -WithDecryption $true -Recursive $true | ForEach-Object {
+    Get-SSMParametersByPath -Path $prefixPath -WithDecryption $true -Recursive $true | ForEach-Object {
 		#Out-String -InputObject $_ 
-		$nameWithoutPrefix = $_.Name.Replace($sourcePrefixPath, "");
+		$pathWithoutPrefix = $_.Name.Replace($prefixPath, "");
         
 		$parameterHash = [ordered]@{
-			PathWithoutPrefix = $nameWithoutPrefix
+			PathWithoutPrefix = $pathWithoutPrefix
 			Type = $_.Type.Value
 			Value = $_.Value
 		}
@@ -31,14 +31,14 @@ try
     };
 
 	# Create directory if it's not created
-	$directodyPath = Split-Path -parent $outputFilePath
+	$directodyPath = Split-Path -parent $filePath
 	if (-not (Test-Path -Path $directodyPath))
 	{
 		New-Item -Path $directodyPath -ItemType "directory"
 	}
 
 	# Write result to file
-	$parameters | ConvertTo-Json | Out-File $outputFilePath
+	$parameters | ConvertTo-Json | Out-File $filePath
 		
     Write-Host "Parameters exported successfully";
 }

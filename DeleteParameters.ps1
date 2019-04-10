@@ -1,17 +1,17 @@
 param(
     [Parameter(Mandatory=$true)]
-	$sourcePrefixPath
+	$prefixPath
 )
 
 Import-Module AWSPowerShell;
 
-Write-Host "Using sourcePrefixPath $sourcePrefixPath"
+Write-Host "Using prefixPath $prefixPath"
 
 try
 {
 	Write-Host "Getting configuration from AWS Parameter Store"
 	
-    Get-SSMParametersByPath -Path $sourcePrefixPath -WithDecryption $true -Recursive $true | ForEach-Object {
+    Get-SSMParametersByPath -Path $prefixPath -WithDecryption $true -Recursive $true | ForEach-Object {
 		#Out-String -InputObject $_ 
         Write-Host "Remove parameter $($_.Name)"
 		Remove-SSMParameter -Name $_.Name -Force
