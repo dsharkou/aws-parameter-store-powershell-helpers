@@ -21,3 +21,19 @@ Examples to use:
 ```
 .\ImportParameters.ps1 -prefixPath /test-prefix-b/ -filePath C:\Temp\test.json
 ```
+
+Exported JSON example:
+```json
+[
+    {
+        "PathWithoutPrefix":  "example/key1",
+        "Type":  "String",
+        "Value":  "value1"
+    },
+    {
+        "PathWithoutPrefix":  "example/key2",
+        "Type":  "SecureString",
+        "Value":  "value2"
+    }
+]
+```
