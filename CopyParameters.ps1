@@ -9,7 +9,6 @@ Import-Module AWSPowerShell;
 
 Write-Host "Using sourcePrefixPath $sourcePrefixPath"
 Write-Host "Using targetPrefixPath $targetPrefixPath"
-Write-Host "Using region $region"
 
 try
 {
