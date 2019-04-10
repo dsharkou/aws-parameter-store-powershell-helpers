@@ -9,5 +9,10 @@ Examples to use:
 
 2. To delete parameters by prefix:
 ```
-.\DeleteParameters.ps1 -sourcePrefixPath /test-prefix-a/
+.\DeleteParameters.ps1 -sourcePrefixPath /test-prefix/
+```
+
+3. To export parameters by prefix (***without prefix because it simplier to concatenate new prefix***):
+```
+.\ExportParameters.ps1 -sourcePrefixPath /test-prefix/ -outputFilePath D:\Temp\test.json
 ```
