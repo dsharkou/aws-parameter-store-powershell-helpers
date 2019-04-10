@@ -16,3 +16,8 @@ Examples to use:
 ```
 .\ExportParameters.ps1 -prefixPath /test-prefix-a/ -filePath C:\Temp\test.json
 ```
+
+4. To import parameters with target prefix (***don't forget to export before***):
+```
+.\ImportParameters.ps1 -prefixPath /test-prefix-b/ -filePath C:\Temp\test.json
+```
