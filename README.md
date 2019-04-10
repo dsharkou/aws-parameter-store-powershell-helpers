@@ -1,4 +1,4 @@
-# aws-parameter-store-helpers
+# aws-parameter-store-powershell-helpers
 Powershell commands to improve maintainability AWS Parameter Store for A/B deployment (working with Powershell 3.0+)
 
 Examples to use:
